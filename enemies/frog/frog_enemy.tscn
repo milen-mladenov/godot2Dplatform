@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://weeqmg7qdc3i"]
+[gd_scene load_steps=22 format=3 uid="uid://weeqmg7qdc3i"]
 
 [ext_resource type="Texture2D" uid="uid://0ldw7brrf5bs" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Enemies and NPC/frog/Sprites/idle/frog-idle-1.png" id="1_hb6wa"]
-[ext_resource type="Script" uid="uid://bnuf3xkrqsj2s" path="res://frog_enemy.gd" id="1_tephl"]
+[ext_resource type="Script" uid="uid://bnuf3xkrqsj2s" path="res://enemies/frog/frog_enemy.gd" id="1_tephl"]
 [ext_resource type="Texture2D" uid="uid://c08cdpsp0jgv0" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Enemies and NPC/frog/Sprites/idle/frog-idle-2.png" id="2_3m6lf"]
 [ext_resource type="Texture2D" uid="uid://bkcromwi5ffhn" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Props Items and VFX/enemy-death 2/spritesheet.png" id="2_vbifk"]
 [ext_resource type="Texture2D" uid="uid://cwonjvrtundby" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Enemies and NPC/frog/Sprites/idle/frog-idle-3.png" id="3_tephl"]
@@ -77,7 +77,82 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tephl"]
-radius = 77.00649
+radius = 122.03688
+
+[sub_resource type="Animation" id="Animation_nyoy6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ioprx"]
+resource_name = "death"
+
+[sub_resource type="Animation" id="Animation_jfajb"]
+resource_name = "fall"
+
+[sub_resource type="Animation" id="Animation_tephl"]
+resource_name = "idle"
+length = 1.1
+loop_mode = 1
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_vbifk"]
+resource_name = "jump"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3we4h"]
+_data = {
+&"RESET": SubResource("Animation_nyoy6"),
+&"death": SubResource("Animation_ioprx"),
+&"fall": SubResource("Animation_jfajb"),
+&"idle": SubResource("Animation_tephl"),
+&"jump": SubResource("Animation_vbifk")
+}
 
 [node name="frog_enemy" type="CharacterBody2D"]
 script = ExtResource("1_tephl")
@@ -96,5 +171,11 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_tephl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3we4h")
+}
+autoplay = "idle"
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]

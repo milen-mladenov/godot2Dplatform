@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bk3s34pdtgwhe"]
+[gd_scene load_steps=10 format=3 uid="uid://bk3s34pdtgwhe"]
 
 [ext_resource type="Texture2D" uid="uid://gjl0l6ll4sni" path="res://sunny-land-phaser-project/sunny-land/assets/environment/tileset.png" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://bl3p16ine76r3" path="res://Player/player.tscn" id="1_f3sb7"]
-[ext_resource type="Script" uid="uid://bctcfgaq63dpi" path="res://bg.gd" id="1_tlwt5"]
+[ext_resource type="Script" uid="uid://bctcfgaq63dpi" path="res://Environment/bg.gd" id="1_tlwt5"]
 [ext_resource type="Texture2D" uid="uid://doyhrmxek5egf" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Environments/SunnyLand/Layers/back.png" id="2_aqk2v"]
-[ext_resource type="PackedScene" uid="uid://weeqmg7qdc3i" path="res://frog_enemy.tscn" id="5_036b0"]
+[ext_resource type="PackedScene" uid="uid://weeqmg7qdc3i" path="res://enemies/frog/frog_enemy.tscn" id="5_036b0"]
+[ext_resource type="PackedScene" uid="uid://bnwbcb01ixt46" path="res://animals/bunny.tscn" id="6_dwbse"]
+[ext_resource type="PackedScene" uid="uid://5207oq2616y3" path="res://animals/pig.tscn" id="7_pkg7o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_036b0"]
 texture = ExtResource("1_aqk2v")
@@ -213,7 +215,13 @@ scale = Vector2(2.75, 2.3416667)
 texture = ExtResource("2_aqk2v")
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
-position = Vector2(352, 207)
+position = Vector2(274, 313)
 
 [node name="frog_enemy" parent="." instance=ExtResource("5_036b0")]
-position = Vector2(487, 316)
+position = Vector2(491, 324)
+
+[node name="bunny" parent="." instance=ExtResource("6_dwbse")]
+position = Vector2(152, 319)
+
+[node name="pig" parent="." instance=ExtResource("7_pkg7o")]
+position = Vector2(318, 323)

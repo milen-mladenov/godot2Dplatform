@@ -1,0 +1,123 @@
+[gd_scene load_steps=11 format=3 uid="uid://5207oq2616y3"]
+
+[ext_resource type="Texture2D" uid="uid://bmht7vcd3t45y" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Enemies and NPC/pig/pig-sheet.png" id="1_kjl1o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m4mka"]
+radius = 12.0
+height = 36.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxdjh"]
+atlas = ExtResource("1_kjl1o")
+region = Rect2(0, 0, 64, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khxtd"]
+atlas = ExtResource("1_kjl1o")
+region = Rect2(64, 0, 64, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1fim"]
+atlas = ExtResource("1_kjl1o")
+region = Rect2(128, 0, 64, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ykxx"]
+atlas = ExtResource("1_kjl1o")
+region = Rect2(192, 0, 64, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jghe2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxdjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khxtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1fim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ykxx")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_y06vp"]
+resource_name = "run"
+length = 0.55
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_el8x0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_li0qf"]
+_data = {
+&"RESET": SubResource("Animation_el8x0"),
+&"run": SubResource("Animation_y06vp")
+}
+
+[node name="pig" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_m4mka")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -4)
+sprite_frames = SubResource("SpriteFrames_jghe2")
+animation = &"run"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_li0qf")
+}
+autoplay = "run"

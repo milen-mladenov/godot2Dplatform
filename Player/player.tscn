@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://c3yd8c0dmyf7r" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Foxy/Sprites/run/player-run-6.png" id="14_sm0op"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvfyp"]
+radius = 8.0
+height = 26.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_76lrf"]
 atlas = ExtResource("2_dkpta")
@@ -253,7 +255,7 @@ position = Vector2(1, -4)
 shape = SubResource("CapsuleShape2D_hvfyp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, -5)
+position = Vector2(2, -7)
 sprite_frames = SubResource("SpriteFrames_755ss")
 animation = &"idle"
 
