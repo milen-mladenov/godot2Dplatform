@@ -7,38 +7,38 @@
 [node name="BG" type="ParallaxBackground"]
 script = ExtResource("1_7r6q2")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+[node name="Sky" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.7, 1)
 motion_mirroring = Vector2(1056, 0)
 
-[node name="Back" type="Sprite2D" parent="ParallaxLayer"]
-position = Vector2(564.00006, 197)
-scale = Vector2(2.75, 2.6416667)
+[node name="Back" type="Sprite2D" parent="Sky"]
+position = Vector2(564.00006, 232.99998)
+scale = Vector2(2.75, 2.3416667)
 texture = ExtResource("1_275co")
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+[node name="Forrest" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(1056, 0)
 
-[node name="Middle" type="Sprite2D" parent="ParallaxLayer2"]
+[node name="Middle" type="Sprite2D" parent="Forrest"]
 position = Vector2(124, 330)
 texture = ExtResource("2_vcwcu")
 
-[node name="Middle2" type="Sprite2D" parent="ParallaxLayer2"]
+[node name="Middle2" type="Sprite2D" parent="Forrest"]
 position = Vector2(300, 331)
 texture = ExtResource("2_vcwcu")
 
-[node name="Middle3" type="Sprite2D" parent="ParallaxLayer2"]
+[node name="Middle3" type="Sprite2D" parent="Forrest"]
 position = Vector2(476, 330)
 texture = ExtResource("2_vcwcu")
 
-[node name="Middle4" type="Sprite2D" parent="ParallaxLayer2"]
+[node name="Middle4" type="Sprite2D" parent="Forrest"]
 position = Vector2(652, 331)
 texture = ExtResource("2_vcwcu")
 
-[node name="Middle5" type="Sprite2D" parent="ParallaxLayer2"]
+[node name="Middle5" type="Sprite2D" parent="Forrest"]
 position = Vector2(828, 330)
 texture = ExtResource("2_vcwcu")
 
-[node name="Middle6" type="Sprite2D" parent="ParallaxLayer2"]
+[node name="Middle6" type="Sprite2D" parent="Forrest"]
 position = Vector2(1004, 331)
 texture = ExtResource("2_vcwcu")
