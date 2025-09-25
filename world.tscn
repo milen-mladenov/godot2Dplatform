@@ -214,14 +214,21 @@ position = Vector2(436, 230)
 scale = Vector2(2.75, 2.3416667)
 texture = ExtResource("2_aqk2v")
 
-[node name="Player" parent="." instance=ExtResource("1_f3sb7")]
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Player" parent="Player" instance=ExtResource("1_f3sb7")]
 position = Vector2(274, 313)
 
-[node name="frog_enemy" parent="." instance=ExtResource("5_036b0")]
-position = Vector2(491, 324)
+[node name="mobs" type="Node2D" parent="."]
 
-[node name="bunny" parent="." instance=ExtResource("6_dwbse")]
+[node name="frog_enemy" parent="mobs" instance=ExtResource("5_036b0")]
+position = Vector2(463, 262)
+
+[node name="bunny" parent="mobs" instance=ExtResource("6_dwbse")]
 position = Vector2(152, 319)
 
-[node name="pig" parent="." instance=ExtResource("7_pkg7o")]
+[node name="pig" parent="mobs" instance=ExtResource("7_pkg7o")]
 position = Vector2(318, 323)
+
+[connection signal="mouse_shape_exited" from="mobs/frog_enemy" to="BG" method="_on_frog_enemy_mouse_shape_exited"]
+[connection signal="mouse_shape_exited" from="mobs/frog_enemy" to="mobs/frog_enemy" method="_on_mouse_shape_exited"]
